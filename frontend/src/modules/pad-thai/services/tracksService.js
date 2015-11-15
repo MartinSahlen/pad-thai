@@ -18,10 +18,9 @@
       var defered = $q.defer();
 
       var weatherTypes = weatherConstants.types;
-      var genreWeatherMap = [];
+      var genreWeatherMap = {};
 
       for(var i = 0; i < weatherTypes.length; i++) {
-        genreWeatherMap.push(weatherTypes[i]);
         genreWeatherMap[weatherTypes[i]] = GenresService.getSelectedGenreByWeatherType(weatherTypes[i]);
       }
 
