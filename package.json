@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "postinstall": "bin/build.sh",
-    "start": "node app --environment=production",
+    "start": "node app --production=true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
