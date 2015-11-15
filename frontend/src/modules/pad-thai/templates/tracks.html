@@ -1,0 +1,10 @@
+<div ng-if="player.track" class="now-playing">
+  <div class="album-cover pull-left" ng-style="{'background-image': 'url(' + (player.track.artwork_url | albumFilter) + ')'}"></div>
+  <div class="genre">#{{ player.track.genre }}</div>
+  <div class="title">{{ player.track.title }}</div>
+</div>
+<div class="track-list" ng-show="player.tracks && player.tracks.length">
+  <div ng-repeat="track in player.tracks" ng-click="playTrack($index)" title="{{ track.title }}" class="track" ng-class="{'playing': player.i === $index}">
+    <div>{{ $index + 1 }}, {{ track.title }}</div>
+  </div>
+</div>

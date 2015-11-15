@@ -1,0 +1,7 @@
+dist/
+src/files/bower_components/
+src/.tmp/
+node_modules/
+.DS_Store
+src/modules/pad-thai/config/environment.js
+npm-debug.log

@@ -1,0 +1,46 @@
+@import "variables";
+
+.sunny {
+  overflow: hidden;
+  #clouds, #sky, #night, #stars{
+    position:absolute;
+    top:60px;
+    left:0;
+    right:0;
+    bottom:60px;
+    width:100%;
+  }
+  #sky{
+    background:#fff url(/img/sky.png) repeat-x top left;
+    z-index:1;
+  }
+  #sun_yellow{
+    position:absolute;
+    left:45%;
+    top:50%;
+    width:150px;
+    height:152px;
+    background:transparent url(/img/sun.png) no-repeat center center;
+    z-index:2;
+  }
+  #sun_red{
+    position:absolute;
+    left:45%;
+    top:50%;
+    width:150px;
+    height:152px;
+    background:transparent url(/img/sun2.png) no-repeat center center;
+    z-index:2;
+    opacity:0;
+  }
+  #ground{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:232px;
+    background:transparent url(/img/ground.png) repeat-x bottom center;
+    z-index:3;
+  }
+}

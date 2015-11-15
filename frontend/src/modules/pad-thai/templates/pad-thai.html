@@ -1,0 +1,92 @@
+<nav class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Pad-Thai player</a>
+        </div>
+        <div class="navbar-buttons">
+            <button type="button" title="Toggle shuffle" class="btn btn-default navbar-btn random" ng-class="{'active': player.shuffle}" ng-click="toggleShuffle()" ng-disabled="isLoading">
+                <span class="glyphicon glyphicon-random"></span>
+            </button>
+            <button type="button" title="Pause" class="btn btn-default navbar-btn pause" ng-click="pause()" ng-disabled="isLoading">
+                <span class="glyphicon glyphicon-pause"></span>
+            </button>
+            <button type="button" title="Play" class="btn btn-default navbar-btn play" ng-click="play()" ng-disabled="isLoading">
+                <span class="glyphicon glyphicon-play"></span>
+            </button>
+        </div>
+        <ul class="nav track-title pull-right">
+            <li ng-show="player.track">
+                <p class="navbar-text">{{ player.track.title }}</p>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="row main main-content">
+    <div ng-if="isVisibleByWeatherTypes(['CLOUDY', 'PARTLY_CLOUDY', 'FOG'])" class="animation-container" directives.cloudy-directive></div>
+    <div ng-if="isVisibleByWeatherTypes(['LIGHT_RAIN', 'MEDIUM_RAIN', 'HEAVY_RAIN', ['SNOW_AND_RAIN']])" class="animation-container" directives.rain-directive></div>
+    <div ng-if="isVisibleByWeatherTypes(['LIGHT_SNOW', 'MEDIUM_SNOW', 'HEAVY_SNOW'])" class="animation-container" directives.snow-directive></div>
+    <div ng-if="isVisibleByWeatherTypes(['SUNNY', 'FAIR'])" class="animation-container" directives.sunny-directive></div>
+    <div ng-if="isVisibleByWeatherTypes(['THUNDER'])" class="animation-container" directives.thunder-directive></div>
+    <div id="overlay" ng-show="isLoading">
+        <img id="loading" src="http://bit.ly/pMtW1K">
+    </div>
+    <div ng-show="player.track" class="col-sm-offset-2 col-lg-offset-3 col-sm-8 col-lg-6">
+        <div class="weather-widget" directives.weather-directive temperature="weatherData.temperature" icon-number="weatherData.iconNumber" weather-type="weatherType"></div>
+        <div class="soundcloud">
+        <div class="text-center" ng-if="!soundcloud.status.isAuthenticated">
+            <button 
+                class="btn btn-lg sc-auth-btn" 
+                ng-click="soundcloud.authenticate(true)"
+                >
+            <i class="icon icon-social-soundcloud"></i>
+            Log in with soundcloud
+            </button>
+        </div>
+        <div class="sc-menu text-center" ng-if="soundcloud.status.isAuthenticated">
+            <ul class="soundcloud-menu">
+                <li class="username">
+                    <i class="icon icon-social-soundcloud"></i>
+                    {{ soundcloud.status.user.username || soundcloud.status.user.full_name }}
+                </li>
+                <li class="sc-action create-playlist" ng-click="openPlaylistCreateModal(player.tracks)">
+                    <i class="icon icon-plus"></i>
+                    Create playlist
+                </li>
+                <li class="sc-action favorites" ng-click="openFavoritesModal(player.tracks)">
+                    <i class="icon icon-heart"></i>
+                    Favorites
+                </li>
+                <li class="sc-action logout" ng-click="soundcloud.unAuthenticate()">
+                    <i class="icon icon-logout"></i>
+                    Log out
+                </li>
+            </ul>
+        </div>
+    </div>
+        <div class="playlist">
+            <div class="top-fader"></div>
+            <div class="tracks" directives.tracks-directive></div>
+            <div class="bottom-fader"></div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="moods">
+            <button type="button" title="I feel happy!" class="btn btn-default pull-left fun" ng-class="{'active': mood === 'fun'}" ng-click="setMood('fun')" ng-disabled="isLoading">
+                <i class="fa fa-smile-o"></i>
+            </button>
+            <button type="button" title="I feel sad..." class="btn btn-default pull-left sad" ng-class="{'active': mood === 'sad'}" ng-click="setMood('sad')" ng-disabled="isLoading">
+                <i class="fa fa-frown-o"></i>
+            </button>
+        </div>
+        <button type="button" title="Load new playlist" class="btn btn-default pull-right refresh" ng-class="{'loading': isRefreshing}" ng-click="setMood('neutral')" ng-disabled="isLoading">
+            <span class="glyphicon glyphicon-refresh"></span>
+        </button>
+        <div class="seeker-container">
+            <div ng-show="player.track" class="current-time">{{ player.currentTime | playTime }}</div>
+            <div class="seeker" directives.seek-bar-directive></div>
+            <div ng-show="player.track" class="total-time">{{ player.duration | playTime }}</div>
+        </div>
+    </div>
+</footer>

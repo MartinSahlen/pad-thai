@@ -1,0 +1,422 @@
+@import "simple-line-icons/less/simple-line-icons";
+@import "bootstrap/less/bootstrap";
+@import "bootswatch/paper/bootswatch";
+@import "font-awesome/less/font-awesome";
+@import "variables";
+
+html, body {
+  overflow-x: hidden;
+}
+
+i[class*='icon-']{
+  vertical-align: middle;
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
+
+.no-border {
+  border-top: none !important;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.center-text {
+  text-align: center;
+}
+
+#overlay {
+  position: absolute;
+  left: 0;
+  top: 65px;
+  bottom: 0;
+  right: 0;
+  background: #000000;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  z-index: 1000;
+}
+
+#loading {
+  width: 50px;
+  height: 57px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin: -28px 0 0 -25px;
+}
+
+.main-content {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  .previous,
+  .next {
+    width: @button-radius;
+    height: @button-radius;
+    border-radius: @button-radius / 2;
+    font-size: 30px;
+    color: #FFFFFF;
+    top: 200px;
+    background-color: rgba(255,255,255,0.5);
+    border: none;
+    line-height: 52px;
+    box-shadow: 1px 1px 2px rgba(255,255,255,0.3);
+    position: absolute;
+
+    &:hover {
+      top: 195px;
+      line-height: 62px;
+      font-size: 34px;
+      width: @button-radius + 10;
+      height: @button-radius + 10;
+      border-radius: (@button-radius + 10) / 2;
+    }
+  }
+}
+
+.weather-widget {
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  border-radius: @border-radius-base @border-radius-base 0 0;
+  padding: 15px;
+
+  .temperature {
+    color: #FFFFFF;
+    font-size: 15px;
+  }
+}
+
+.playlist {
+  padding: 15px 0;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  border-radius: 0 0 @border-radius-base @border-radius-base;
+  position: relative;
+
+  h1,h2,h3,h4,h5,h6 {
+    color: white;
+  }
+
+  .top-fader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* Standard syntax */
+  }
+  
+  .bottom-fader {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)); /* Standard syntax */
+  }
+
+  .now-playing {
+    overflow: hidden;
+    height: 110px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ECECEC;
+    position: relative;
+    margin: 0 40px 10px;
+    line-height: 20px;
+
+    .album-cover {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-position: center center;
+      background-color: #FFFFFF;
+      margin-right: 15px;
+    }
+
+    .genre {
+      font-size: 15px;
+      width: 100%;
+      padding-left: 115px;
+    }
+
+    .title {
+      font-size: 18px;
+      width: 100%;
+      padding-left: 115px;
+    }
+  }
+
+  .track-list {
+    padding: 0 40px;
+    overflow-y: auto;
+
+    .track {
+      overflow: hidden;
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 34px;
+      position: relative;
+
+      &:hover {
+        font-weight: bold;
+      }
+      &.playing {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.navbar-default .navbar-text {
+  color: #666666;
+}
+
+.navbar-buttons {
+  float: right;
+
+  .play,
+  .pause {
+    margin-right: 5px;
+  }
+  .play,
+  .pause,
+  .random {
+    float: right;
+  }
+}
+
+.thunder {
+  background-image: url('/img/Thunder-Lightning.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: @footer-background;
+  text-align: center;
+
+  .moods {
+    width: 90px;
+    height: 50px;
+    float: left;
+    position: relative;
+    top: -(@button-radius / 2);
+  }
+
+  .fun,
+  .sad {
+    border-radius: (@button-radius - 20) / 2;
+    width: @button-radius - 20;
+    height: @button-radius - 20;
+    margin-top: 10px;
+
+    &.btn[disabled] {
+      opacity: 1;
+      filter: none;
+      background-color: @button-background;
+    }
+    &:hover {
+      background-color: darken(@button-background, 5%);
+    }
+  }
+  .genres,
+  .refresh {
+    border-radius: @button-radius / 2;
+    width: @button-radius;
+    height: @button-radius;
+    position: relative;
+    top: -(@button-radius / 2);
+
+    &.btn[disabled] {
+      opacity: 1;
+      filter: none;
+    }
+
+    .glyphicon {
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
+
+  .genres {
+    margin-left: 5px;
+  }
+
+  .fun,
+  .sad {
+    color: @button-color;
+    background-color: @button-background;
+    background-size: cover;
+
+    &.active {
+      border-radius: @button-radius / 2;
+      width: @button-radius;
+      height: @button-radius;
+      i {
+        font-size: 60px;
+      }
+    }
+  }
+
+  .fun {
+    position: relative;
+
+    i {
+      position: absolute;
+      top: -6px;
+      left: -1px;
+      font-size: 40px;
+    }
+  }
+
+  .sad {
+    margin-left: 5px;
+    position: relative;
+
+    i {
+      position: absolute;
+      top: -6px;
+      left: -1px;
+      font-size: 40px;
+    }
+  }
+
+  .refresh.loading {
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
+  }
+
+  .seeker-container {
+    position: relative;
+    margin: 20px 120px 0;
+    height: 25px;
+
+    .current-time {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .seeker {
+      position: absolute;
+      top: -17px;
+      padding: 0 50px;
+      width: 100%;
+    }
+    .total-time {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .seek-bar {
+      margin-bottom: 0;
+      height: 9px;
+      top: 25px;
+      margin-left: 5px;
+      margin-right: 5px;
+      position: relative;
+      border-radius: @border-radius-base;
+    }
+  }
+
+  .copyright {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    text-align: center;
+    color: #AAAAAA;
+
+    .name {
+      margin-left: 5px;
+    }
+  }
+}
+
+.nav.track-title {
+  p.navbar-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 350px;
+  }
+}
+
+@media (min-width: 0) {
+  .navbar-header {
+    float: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav.track-title {
+    width: 100%;
+    text-align: center;
+
+    p.navbar-text {
+      margin: 5px auto 15px;
+    }
+  }
+  .main-content {
+    margin-top: 140px;
+  }
+  .footer {
+    .seeker-container {
+      margin: 35px 20px 0;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar-header a {
+    font-size: 20px;
+  }
+  .nav.track-title {
+    p.navbar-text {
+      max-width: 300px;
+    }
+  }
+  .play,
+  .pause,
+  .random {
+    width: 40px;
+    padding: 5px;
+  }
+  .main-content {
+    margin-top: 105px;
+    margin-bottom: 60px;
+  }
+  .playlist {
+    padding: 10px 0;
+
+    .now-playing {
+      margin: 0 20px 10px;
+    }
+    .track-list {
+      padding: 0 20px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="modal.dismiss()" aria-label="Close">&times;</button>
+  <h4 class="modal-title">Add favorites from the current list</h4>
+</div>
+<div class="modal-body favorites-list">
+  <div class="table-responsive">
+   <table class="table">
+      <thead>
+         <tr>
+            <th>Artist</th>
+            <th>Name</th>
+            <th></th>
+         </tr>
+      </thead>
+      
+      <tbody>
+         <tr ng-repeat="track in tracks">
+           <td>{{ track.user.username }}</td>
+           <td>{{ track.title }}</td>
+           <td>
+             <i class="fa fa-heart-o sc-action" ng-if="!track.isFavorite" ng-click="addFavorite(track)"></i>
+             <i class="fa fa-heart sc-action" ng-if="track.isFavorite" ng-click="removeFavorite(track)"></i>
+           </td>
+         </tr>
+      </tbody>
+   </table>
+  </div>
+</div>
+<div class="modal-footer"></div>

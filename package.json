@@ -1,0 +1,47 @@
+{
+  "name": "hackaton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "postinstall": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "0.12.7",
+    "npm": "3.3.10"
+  },
+  "dependencies": {
+    "bower": "1.6.5",
+    "cors": "2.7.1",
+    "express": "4.13.3",
+    "request": "2.65.0",
+    "yargs": "3.30.0",
+    "yr.no-forecast": "git+https://github.com/MartinSahlen/yr.no-forecast",
+    "del": "2.0.2",
+    "gulp": "3.9.0",
+    "gulp-autoprefixer": "3.1.0",
+    "gulp-cdnizer": "1.1.6",
+    "gulp-eslint": "1.0.0",
+    "gulp-flatten": "0.2.0",
+    "gulp-gzip": "^1.2.0",
+    "gulp-include-source": "0.0.5",
+    "gulp-inline-angular-templates": "0.1.5",
+    "gulp-less": "3.0.3",
+    "gulp-minify-css": "1.2.1",
+    "gulp-minify-html": "1.0.4",
+    "gulp-processhtml": "1.1.0",
+    "gulp-rev": "6.0.1",
+    "gulp-uglify": "1.4.2",
+    "gulp-usemin": "0.3.15",
+    "run-sequence": "1.1.4",
+    "wiredep": "3.0.0-beta",
+    "yargs": "3.29.0"
+  },
+  "devDependencies": {
+    "browser-sync": "2.9.11",
+    "connect-history-api-fallback": "1.1.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
