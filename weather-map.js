@@ -159,6 +159,8 @@ function getGenreByNumber(number) {
 }
 
 function getGenreByNumberAndUserDefinedMapping(number, mapping) {
+    number = parseInt(number, 10);
+
     if(iconNumbers.sunny.indexOf(number) !== -1) {
         return mapping['SUNNY'];
     }
