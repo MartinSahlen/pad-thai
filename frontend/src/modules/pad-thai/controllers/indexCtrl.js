@@ -19,25 +19,39 @@
     $scope.player = PlayerService;
     $scope.soundcloud = SoundcloudService;
 
-    function fetchTracks(refreshing) {
-      if(navigator.geolocation) {
-        $scope.isLoading = true;
-        if(refreshing) {
-          $scope.isRefreshing = true;
-        }
-        navigator.geolocation.getCurrentPosition(function(position) {
-          TracksService.getTracksForCoordinates(position.coords.latitude, position.coords.longitude, $scope.mood).then(
-            function(data) {
-              $scope.isLoading = false;
-              $scope.isRefreshing = false;
-              $scope.weatherType = data.weatherType;
-              $scope.tracksData = data.tracks;
-              $scope.weatherData = data.weatherData;
+    function getTracks(lat, lng) {
+      TracksService.getTracksForCoordinates(lat, lng, $scope.mood).then(
+          function(data) {
+            $scope.isLoading = false;
+            $scope.isRefreshing = false;
+            $scope.weatherType = data.weatherType;
+            $scope.tracksData = data.tracks;
+            $scope.weatherData = data.weatherData;
 
-              PlayerService.loadTracks(data.tracks);
-              PlayerService.play();
-            });
+            PlayerService.loadTracks(data.tracks);
+            PlayerService.play();
+          });
+    }
+
+    function fetchTracks(refreshing) {
+      $scope.isLoading = true;
+      if(refreshing) {
+        $scope.isRefreshing = true;
+      }
+
+      // Googleplex fallback coordinates
+      var lat = 37.4219999;
+      var lng = -122.0862515;
+
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          lat = position.coords.latitude;
+          lng = position.coords.longitude;
+
+          getTracks(lat, lng);
         });
+      } else {
+        getTracks(lat, lng);
       }
     }
 
