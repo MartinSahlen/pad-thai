@@ -5,5 +5,4 @@ if  [ -n "${NODE_ENV}" ] && [ "$NODE_ENV" == "production" ];  then
     gulp dist --environment=production
 else
   echo "missing environment variables for building"
-  exit 1
 fi
