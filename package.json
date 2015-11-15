@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "postinstall": "",
+    "postinstall": "bin/build.sh",
+    "start": "node app --production=true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {

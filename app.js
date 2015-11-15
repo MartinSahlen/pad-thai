@@ -38,6 +38,14 @@ if (argv.production) {
   app.use('*', function(req, res){
     res.sendFile(__dirname + '/frontend/dist/index.html');
   });
+  app.use(function(req, res, next) {
+    if (req.headers["x-forwarded-proto"] == 'https') {
+      next();
+     } else {
+      res.redirect(301, "https://" + req.headers.host + req.url);
+    }
+  });
+  PORT = process.env.PORT; 
 }
 
 app.listen(PORT, function() {

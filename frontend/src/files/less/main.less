@@ -162,7 +162,7 @@ i[class*='icon-']{
   .track-list {
     padding: 0 40px;
     overflow-y: auto;
-
+    max-height: 200px;
     .track {
       overflow: hidden;
       font-size: 18px;
@@ -372,6 +372,12 @@ i[class*='icon-']{
 }
 
 @media (max-width: 767px) {
+  .playlist {
+    .track-list {
+    max-height: initial;
+  }
+  }
+  
   .nav.track-title {
     width: 100%;
     text-align: center;
