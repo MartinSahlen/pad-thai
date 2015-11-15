@@ -99,7 +99,11 @@
       $uibModal.open({
         templateUrl: 'modules/pad-thai/templates/genres-modal.html',
         controller: 'pad-thai.controllers.GenresModalController'
-      })
+      }).result.then(function(refresh) {
+        if(refresh) {
+          fetchTracks(true);
+        }
+      });
     };
 
     // Init
