@@ -158,9 +158,54 @@ function getGenreByNumber(number) {
     return 'world';
 }
 
+function getGenreByNumberAndUserDefinedMapping(number, mapping) {
+    if(iconNumbers.sunny.indexOf(number) !== -1) {
+        return mapping['SUNNY'];
+    }
+    if(iconNumbers.fair.indexOf(number) !== -1) {
+        return mapping['FAIR'];
+    }
+    if(iconNumbers.cloudy.indexOf(number) !== -1) {
+        return mapping['CLOUDY'];
+    }
+    if(iconNumbers.partlyCloudy.indexOf(number) !== -1) {
+        return mapping['PARTLY_CLOUDY'];
+    }
+    if(iconNumbers.fog.indexOf(number) !== -1) {
+        return mapping['FOG'];
+    }
+    if(iconNumbers.lightRain.indexOf(number) !== -1) {
+        return mapping['LIGHT_RAIN'];
+    }
+    if(iconNumbers.mediumRain.indexOf(number) !== -1) {
+        return mapping['MEDIUM_RAIN'];
+    }
+    if(iconNumbers.heavyRain.indexOf(number) !== -1) {
+        return mapping['HEAVY_RAIN'];
+    }
+    if(iconNumbers.thunder.indexOf(number) !== -1) {
+        return mapping['THUNDER'];
+    }
+    if(iconNumbers.lightSnow.indexOf(number) !== -1) {
+        return mapping['LIGHT_SNOW'];
+    }
+    if(iconNumbers.mediumSnow.indexOf(number) !== -1) {
+        return mapping['MEDIUM_SNOW'];
+    }
+    if(iconNumbers.heavySnow.indexOf(number) !== -1) {
+        return mapping['HEAVY_SNOW'];
+    }
+    if(iconNumbers.snowAndRain.indexOf(number) !== -1) {
+        return mapping['SNOW_AND_RAIN'];
+    }
+
+    return 'UNKNOWN';
+}
+
 module.exports = {
     getWeatherMap: getWeatherMap,
     getTypeByNumber: getTypeByNumber,
     getTagsByNumber: getTagsByNumber,
-    getGenreByNumber: getGenreByNumber
+    getGenreByNumber: getGenreByNumber,
+    getGenreByNumberAndUserDefinedMapping: getGenreByNumberAndUserDefinedMapping
 };

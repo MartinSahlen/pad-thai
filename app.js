@@ -2,11 +2,13 @@ var express = require('express');
 var helpers = require('./helpers');
 var weatherMap = require('./weather-map');
 var cors = require('cors');
+var bodyParser = require('body-parser');
 var app = express();
 var argv = require('yargs').argv;
 var PORT = argv.port || 8000;
 
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get('/weather', function(req, res){
   helpers.getWeatherForLatLong(req.query.lat, req.query.lng, function weatherData(error, weatherData) {
@@ -22,6 +24,21 @@ app.get('/tracks', function(req, res){
   helpers.getWeatherForLatLong(req.query.lat, req.query.lng, function weatherData(error, weatherData) {
     var weatherType = weatherMap.getTypeByNumber(weatherData.iconNumber);
     var genre = weatherMap.getGenreByNumber(weatherData.iconNumber);
+    var mood = req.query.mood;
+    helpers.getTracksByGenre(genre, mood, function(error, tracks) {
+      if (error) {
+        res.status(500);
+      } else {
+        res.json({weatherType: weatherType, tracks: tracks, weatherData: weatherData});
+      }
+    });
+  });
+});
+
+app.post('/tracks', function(req, res){
+  helpers.getWeatherForLatLong(req.query.lat, req.query.lng, function weatherData(error, weatherData) {
+    var weatherType = weatherMap.getTypeByNumber(weatherData.iconNumber);
+    var genre = weatherMap.getGenreByNumberAndUserDefinedMapping(weatherData.iconNumber, req.body);
     var mood = req.query.mood;
     helpers.getTracksByGenre(genre, mood, function(error, tracks) {
       if (error) {
