@@ -11,35 +11,84 @@
     'localStorageService'
   ];
 
-  function GenresService(genres, weatherTypes, localStorage) {
+  function GenresService(genreConstants, weatherConstants, localStorage) {
     function getAllWeatherTypeGenres() {
-      var weatherTypes = weatherTypes.types;
       var weatherTypeGenres = [];
 
-      weatherTypes.map(function(weatherType, key) {
+      weatherConstants.types.map(function(weatherType, key) {
         weatherTypeGenres.push(localStorage.get(key) || '-');
       });
 
       return weatherTypeGenres;
     }
 
-    function getGenreByWeatherType(weatherType) {
-      return localStorage.get(weatherType);
+    function getSelectedGenreByWeatherType(weatherType) {
+      var selectedGenre = localStorage.get(weatherType);
+
+      if(!selectedGenre) {
+        if(weatherType === 'SUNNY') {
+          return 'POP';
+        }
+        if(weatherType === 'FAIR') {
+          return 'DISCO';
+        }
+        if(weatherType === 'CLOUDY') {
+          return 'COUNTRY';
+        }
+        if(weatherType === 'PARTLY_CLOUDY') {
+          return 'DANCEHALL';
+        }
+        if(weatherType === 'FOG') {
+          return 'CLASSICAL';
+        }
+        if(weatherType === 'LIGHT_RAIN') {
+          return 'PIANO';
+        }
+        if(weatherType === 'MEDIUM_RAIN') {
+          return 'DUBSTEP';
+        }
+        if(weatherType === 'HEAVY_RAIN') {
+          return 'REAGGE';
+        }
+        if(weatherType === 'THUNDER') {
+          return 'METAL';
+        }
+        if(weatherType === 'LIGHT_SNOW') {
+          return 'TECHNO';
+        }
+        if(weatherType === 'MEDIUM_SNOW') {
+          return 'TRANCE';
+        }
+        if(weatherType === 'HEAVY_SNOW') {
+          return 'INDIE';
+        }
+        if(weatherType === 'SNOW_AND_RAIN') {
+          return 'LATIN';
+        }
+      }
+
+      return selectedGenre;
     }
 
-    function setGenreByWeatherType(genre, weatherType) {
-      localStorage.set(weatherType, genre);
+    function setSelectedGenreByWeatherType(genreType, weatherType) {
+      console.log(genreType, weatherType);
+      localStorage.set(weatherType, genreType);
     }
 
-    function getAllGenres() {
-      return genres;
+    function getAllGenreTypes() {
+      return genreConstants.types;
+    }
+
+    function getGenreNameByType(type) {
+      return genreConstants.names[type];
     }
 
     return {
-      getAllGenres: getAllGenres,
+      getAllGenreTypes: getAllGenreTypes,
+      getGenreNameByType: getGenreNameByType,
       getAllWeatherTypeGenres: getAllWeatherTypeGenres,
-      getGenreByWeatherType: getGenreByWeatherType,
-      setGenreByWeatherType: setGenreByWeatherType
+      getSelectedGenreByWeatherType: getSelectedGenreByWeatherType,
+      setSelectedGenreByWeatherType: setSelectedGenreByWeatherType
     };
   }
 })();

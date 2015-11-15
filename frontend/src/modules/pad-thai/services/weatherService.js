@@ -12,7 +12,7 @@
     'pad-thai.config.weather-types'
   ];
 
-  function WeatherService($http, $q, environment, weatherTypes) {
+  function WeatherService($http, $q, environment, weatherConstants) {
 
     function getWeatherForCoordinates(lat, lng) {
 
@@ -30,11 +30,16 @@
     }
 
     function getAllWeatherTypes() {
-      return weatherTypes.types;
+      return weatherConstants.types;
+    }
+
+    function getWeatherNameByType(type) {
+      return weatherConstants.names[type];
     }
 
     return {
       getAllWeatherTypes: getAllWeatherTypes,
+      getWeatherNameByType: getWeatherNameByType,
       getWeatherForCoordinates: getWeatherForCoordinates
     }
   }

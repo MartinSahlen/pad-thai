@@ -5,7 +5,7 @@
   angular
   .module('pad-thai')
   .constant('pad-thai.config.weather-types', {
-    types: {
+    names: {
       'SUNNY': 'Sunny',
       'FAIR': 'Fair',
       'CLOUDY': 'Cloudy',
@@ -19,7 +19,22 @@
       'MEDIUM_SNOW': 'Medium snow',
       'HEAVY_SNOW': 'Heavy snow',
       'SNOW_AND_RAIN': 'Snow & rain'
-    }
+    },
+    types: [
+      'SUNNY',
+      'FAIR',
+      'CLOUDY',
+      'PARTLY_CLOUDY',
+      'FOG',
+      'LIGHT_RAIN',
+      'MEDIUM_RAIN',
+      'HEAVY_RAIN',
+      'THUNDER',
+      'LIGHT_SNOW',
+      'MEDIUM_SNOW',
+      'HEAVY_SNOW',
+      'SNOW_AND_RAIN'
+    ]
   });
 
 })();

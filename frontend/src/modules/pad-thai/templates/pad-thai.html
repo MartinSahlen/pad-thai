@@ -80,6 +80,9 @@
                 <i class="fa fa-frown-o"></i>
             </button>
         </div>
+        <button type="button" title="Set genres" class="btn btn-default pull-right genres" ng-click="openGenresModal()" ng-disabled="isLoading">
+            <span class="glyphicon glyphicon-music"></span>
+        </button>
         <button type="button" title="Load new playlist" class="btn btn-default pull-right refresh" ng-class="{'loading': isRefreshing}" ng-click="setMood('neutral')" ng-disabled="isLoading">
             <span class="glyphicon glyphicon-refresh"></span>
         </button>

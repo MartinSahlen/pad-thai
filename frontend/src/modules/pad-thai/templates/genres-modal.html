@@ -1,12 +1,85 @@
 <div class="modal-header">
   <button type="button" class="close" ng-click="modal.dismiss()" aria-label="Close">&times;</button>
-  <h4 class="modal-title">Set genres for weather types</h4>
+  <h4 class="modal-title">Set genre for weather types</h4>
 </div>
 <div class="modal-body weather-list">
-  <div ng-repeat="weatherType in weatherTypes track by $index" class="genre-select">
-      <select class="form-control">
-          <option ng-repeat="(key, title) in genres" value="{{ key }}">{{ title }}</option>
-      </select>
-  </div>
+    <div class="form-group">
+        <label for="SUNNY">{{ getWeatherNameByType('SUNNY') }}</label>
+        <select id="SUNNY" class="form-control" ng-model="selectedGenreSunny">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreSunny">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="FAIR">{{ getWeatherNameByType('FAIR') }}</label>
+        <select id="FAIR" class="form-control" ng-model="selectedGenreFair">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreFair">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="CLOUDY">{{ getWeatherNameByType('CLOUDY') }}</label>
+        <select id="CLOUDY" class="form-control" ng-model="selectedGenreCloudy">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreCloudy">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="PARTLY_CLOUDY">{{ getWeatherNameByType('PARTLY_CLOUDY') }}</label>
+        <select id="PARTLY_CLOUDY" class="form-control" ng-model="selectedGenrePartlyCloudy">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenrePartlyCloudy">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="FOG">{{ getWeatherNameByType('FOG') }}</label>
+        <select id="FOG" class="form-control" ng-model="selectedGenreFog">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreFog">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="LIGHT_RAIN">{{ getWeatherNameByType('LIGHT_RAIN') }}</label>
+        <select id="LIGHT_RAIN" class="form-control" ng-model="selectedGenreLightRain">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreLightRain">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="MEDIUM_RAIN">{{ getWeatherNameByType('MEDIUM_RAIN') }}</label>
+        <select id="MEDIUM_RAIN" class="form-control" ng-model="selectedGenreMediumRain">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreMediumRain">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="HEAVY_RAIN">{{ getWeatherNameByType('HEAVY_RAIN') }}</label>
+        <select id="HEAVY_RAIN" class="form-control" ng-model="selectedGenreHeavyRain">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreHeavyRain">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="THUNDER">{{ getWeatherNameByType('THUNDER') }}</label>
+        <select id="THUNDER" class="form-control" ng-model="selectedGenreThunder">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreThunder">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="LIGHT_SNOW">{{ getWeatherNameByType('LIGHT_SNOW') }}</label>
+        <select id="LIGHT_SNOW" class="form-control" ng-model="selectedGenreLightSnow">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreLightSnow">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="MEDIUM_SNOW">{{ getWeatherNameByType('MEDIUM_SNOW') }}</label>
+        <select id="MEDIUM_SNOW" class="form-control" ng-model="selectedGenreMediumSnow">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreMediumSnow">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="HEAVY_SNOW">{{ getWeatherNameByType('HEAVY_SNOW') }}</label>
+        <select id="HEAVY_SNOW" class="form-control" ng-model="selectedGenreHeavySnow">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreHeavySnow">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="SNOW_AND_RAIN">{{ getWeatherNameByType('SNOW_AND_RAIN') }}</label>
+        <select id="SNOW_AND_RAIN" class="form-control" ng-model="selectedGenreSnowAndRain">
+            <option ng-repeat="genreType in genreTypes" value="{{ genreType }}" ng-selected="genreType === selectedGenreSnowAndRain">{{ getGenreNameByType(genreType) }}</option>
+        </select>
+    </div>
 </div>
 <div class="modal-footer"></div>
