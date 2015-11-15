@@ -1,6 +1,7 @@
 var express = require('express');
 var helpers = require('./helpers');
 var weatherMap = require('./weather-map');
+var genreMap = require('./genre-map');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var app = express();
@@ -38,7 +39,7 @@ app.get('/tracks', function(req, res){
 app.post('/tracks', function(req, res){
   helpers.getWeatherForLatLong(req.query.lat, req.query.lng, function weatherData(error, weatherData) {
     var weatherType = weatherMap.getTypeByNumber(weatherData.iconNumber);
-    var genre = weatherMap.getGenreByNumberAndUserDefinedMapping(weatherData.iconNumber, req.body);
+    var genre = genreMap.getGenreByType(weatherMap.getGenreByNumberAndUserDefinedMapping(weatherData.iconNumber, req.body))[1];
     var mood = req.query.mood;
     helpers.getTracksByGenre(genre, mood, function(error, tracks) {
       if (error) {
