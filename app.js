@@ -4,7 +4,7 @@ var weatherMap = require('./weather-map');
 var cors = require('cors');
 var app = express();
 var argv = require('yargs').argv;
-var PORT = process.env.PORT || argv.port || 8000;
+var PORT = argv.port || 8000;
 
 app.use(cors());
 
@@ -44,7 +44,8 @@ if (argv.production) {
      } else {
       res.redirect(301, "https://" + req.headers.host + req.url);
     }
-  }); 
+  });
+  PORT = process.env.PORT; 
 }
 
 app.listen(PORT, function() {

@@ -1,6 +1,7 @@
 <div ng-if="player.track" class="now-playing">
   <div class="album-cover pull-left" ng-style="{'background-image': 'url(' + (player.track.artwork_url | albumFilter) + ')'}"></div>
   <div class="genre">#{{ player.track.genre }}</div>
+  <div class="title"><strong>{{ player.track.user.username }}</strong></div>
   <div class="title">{{ player.track.title }}</div>
 </div>
 <div class="track-list" ng-show="player.tracks && player.tracks.length">
