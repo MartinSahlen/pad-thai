@@ -8,12 +8,13 @@
   PadThaiIndexController.$inject = [
     '$scope',
     '$uibModal',
+    '$stateParams',
     'pad-thai.services.TracksService',
     'pad-thai.services.PlayerService',
     'pad-thai.services.SoundcloudService'
   ];
 
-  function PadThaiIndexController($scope, $uibModal, TracksService, PlayerService, SoundcloudService) {
+  function PadThaiIndexController($scope, $uibModal, $stateParams, TracksService, PlayerService, SoundcloudService) {
       
     $scope.player = PlayerService;
     $scope.soundcloud = SoundcloudService;
@@ -68,7 +69,31 @@
     };
 
     $scope.isVisibleByWeatherTypes = function(weatherTypes) {
-      return weatherTypes.indexOf($scope.weatherType) !== -1;
+      if ($stateParams.background) {
+        var weatherType = '';
+        switch($stateParams.background) {
+          case 'cloudy':
+            weatherType = 'CLOUDY';
+            break;
+          case 'rainy':
+            weatherType = 'LIGHT_RAIN';
+            break;
+          case 'snowy':
+            weatherType = 'LIGHT_SNOW';
+            break;
+          case 'sunny':
+            weatherType = 'SUNNY';
+            break;
+          case 'thunder':
+            weatherType = 'THUNDER';
+            break;
+          default:
+            return weatherTypes.indexOf($scope.weatherType) !== -1;
+        }
+        return weatherTypes.indexOf(weatherType) !== -1;
+      } else {
+        return weatherTypes.indexOf($scope.weatherType) !== -1;
+      }
     };
 
     $scope.openPlaylistCreateModal = function(tracks) {

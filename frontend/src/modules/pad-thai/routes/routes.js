@@ -13,7 +13,7 @@
   function Router($stateProvider) {
     $stateProvider
     .state('pad-thai-index', {
-      url: '/',
+      url: '/?background',
       templateUrl: 'modules/pad-thai/templates/pad-thai.html',
       controller: 'pad-thai.controllers.PadThaiIndexController'
     })
