@@ -71,7 +71,6 @@
     }
 
     function setSelectedGenreByWeatherType(genreType, weatherType) {
-      console.log(genreType, weatherType);
       localStorage.set(weatherType, genreType);
     }
 
