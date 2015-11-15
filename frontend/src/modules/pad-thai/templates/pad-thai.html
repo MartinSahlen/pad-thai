@@ -23,7 +23,7 @@
 </nav>
 <div class="row main main-content">
     <div ng-if="isVisibleByWeatherTypes(['CLOUDY', 'PARTLY_CLOUDY', 'FOG'])" class="animation-container" directives.cloudy-directive></div>
-    <div ng-if="isVisibleByWeatherTypes(['LIGHT_RAIN', 'MEDIUM_RAIN', 'HEAVY_RAIN', ['SNOW_AND_RAIN']])" class="animation-container" directives.rain-directive></div>
+    <div ng-if="isVisibleByWeatherTypes(['LIGHT_RAIN', 'MEDIUM_RAIN', 'HEAVY_RAIN', 'SNOW_AND_RAIN'])" class="animation-container" directives.rain-directive></div>
     <div ng-if="isVisibleByWeatherTypes(['LIGHT_SNOW', 'MEDIUM_SNOW', 'HEAVY_SNOW'])" class="animation-container" directives.snow-directive></div>
     <div ng-if="isVisibleByWeatherTypes(['SUNNY', 'FAIR'])" class="animation-container" directives.sunny-directive></div>
     <div ng-if="isVisibleByWeatherTypes(['THUNDER'])" class="animation-container" directives.thunder-directive></div>
